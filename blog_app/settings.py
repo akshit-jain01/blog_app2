@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'drfblog-app.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost', 'drfblog-app.herokuapp.com']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'home',
+    'cloudinary_storage',
     'rest_framework_simplejwt',
 ]
 
@@ -134,8 +135,20 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY':config("CLOUDINARY_API_KEY"),
+    'API_SECRET':config("CLOUDINARY_API_SECRET")
+}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'vrdarshan',
+#     'API_KEY':'183957385842213',
+#     'API_SECRET':'DW7UvFNIGOAVh2NIMn34hkM9iTU'
+# }

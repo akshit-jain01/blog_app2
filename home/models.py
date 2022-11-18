@@ -17,7 +17,7 @@ class Blog(HomeModel):
     title = models.CharField(max_length = 500)
     category = models.CharField(max_length = 255)
     description = models.TextField()
-    cover = models.ImageField(upload_to="blogs")
+    cover = models.ImageField(upload_to='vrwala')
     author_name = models.CharField(max_length = 255)
     createdAt = models.DateField(auto_now = True)
 
