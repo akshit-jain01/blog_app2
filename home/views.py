@@ -32,7 +32,7 @@ class PublicView(APIView):
 
             return Response({
                 'data':serializer.data,
-                'message':'blogs fetched successfully'
+                'message':'venues fetched successfully'
             },status=status.HTTP_202_ACCEPTED)
 
         except Exception as e:
@@ -62,7 +62,7 @@ class BlogView(APIView):
 
             return Response({
                 'data':serializer.data,
-                'message':'blogs fetched successfully'
+                'message':'venues fetched successfully'
             },status=status.HTTP_202_ACCEPTED)
 
         except Exception as e:
@@ -91,7 +91,7 @@ class BlogView(APIView):
 
             return Response({
                     'data' : serializer.data,
-                    'message' : 'blog created successfully'
+                    'message' : 'venue entry successfully'
                 },status=status.HTTP_201_CREATED)
             
         except Exception as e:
@@ -113,7 +113,7 @@ class BlogView(APIView):
             if not blog.exists():
                 return response({
                     'data':{},
-                    'message':"invalid blog uid"
+                    'message':"invalid venue card uid"
                 }, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -135,7 +135,7 @@ class BlogView(APIView):
 
             return Response({
                     'data' : serializer.data,
-                    'message' : 'blog updated successfully'
+                    'message' : 'venue details updated successfully'
                 },status=status.HTTP_201_CREATED)
         
         
@@ -157,21 +157,21 @@ class BlogView(APIView):
             if not blog.exists():
                 return response({
                     'data':{},
-                    'message':"invalid blog uid"
+                    'message':"invalid venue card uid"
                 }, status=status.HTTP_401_UNAUTHORIZED)
 
 
             if request.user != blog[0].user:
                 return response({
                     'data':{},
-                    'message':"you are not authorized to change this blog"
+                    'message':"you are not authorized to change this venue details"
                 }, status=status.HTTP_401_UNAUTHORIZED)
 
             blog[0].delete()
 
             return Response({
                     'data' : {},
-                    'message' : 'blog deleted successfully'
+                    'message' : 'venue deleted successfully'
                 },status=status.HTTP_202_ACCEPTED)
             
         except Exception as e:
